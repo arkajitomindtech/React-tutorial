@@ -1,5 +1,6 @@
 // import ExpenseItems from "./components/ExpenseItems";
-import Expenses from "./components/Expenses";
+import Expenses from "./components/Expenses/Expenses";
+import NewExpense from "./components/NewExpense/NewExpense";
 
 function App() {
   const expenses = [
@@ -24,9 +25,18 @@ function App() {
     },
   ];
 
+  const submitDataHandler = (enteredExpenseData) => {
+    const expenseData = {
+      ...enteredExpenseData,
+      id: Math.random().toString(),
+    };
+    console.log(expenseData);
+  };
+
   return (
     <div>
-      <h2>Let's get started!</h2>
+      {/* <h2>Let's get started!</h2> */}
+      <NewExpense onSubmeitExpenseData={submitDataHandler} />
       <Expenses items={expenses}></Expenses>
     </div>
   );
